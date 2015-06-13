@@ -1,0 +1,36 @@
+to integrate a function from x to y:
+	default number of steps be 100
+	step size is x-y, divided by the number of steps
+	z be x // current value
+	sum be 0
+	i be 0
+	while i is smaller or less then y do
+  		evaluate the function at i
+  		add the result to the sum
+  		increase i by the step size
+	done
+	return the sum divided by the number of steps
+end
+
+integrate sine from 1 to 2
+assert result is approximately 0.956
+
+
+// All comment styles are OK
+#  All comment styles are OK
+-- All comment styles are (Applescript style)
+/* All comment styles are OK */
+/* 
+OK to have linebreaks??
+*/
+
+	
+/* reductions | pattern matching :
+   generating new language patterns on the fly, better than lisp macros!!
+let the initial value of i be x =» i=x
+# ^^^ this is now a pattern!
+
+default x be y -> x=y if x is not set
+# ^^^ this is now a pattern!
+*/
+
