@@ -1,6 +1,6 @@
 define the factorial of an integer i as
-    1 if i is 0
-    i times factorial of i minus one otherwise
+    if i is 0 then return 1
+    i times factorial of i minus one
 end
 
 assert factorial of 5 is 120
