@@ -1,3 +1,11 @@
+x=3
+int y=three
+assert x=y
+
+a='hi'
+set b to "hi"
+
+
 try
 var x
 int x          # ok, we can add type afterwards
