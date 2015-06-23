@@ -1,0 +1,124 @@
+#!/usr/bin/env angle
+# import numpy
+# import json
+# # import cv
+# import cv2 as opencv
+# import os
+# import sys
+# import json
+# import re
+# import threading
+# import traceback
+# import urllib2
+# import pyaudio
+# import skimage.io
+# import time
+# import sys
+# from os import system
+# from platform import system as platform
+# from json import dumps, loads, JSONEncoder, JSONDecoder
+
+
+to create a fullscreen window with name n
+  return cv2.namedWindow(n, cv.CV_WINDOW_FULLSCREEN)
+
+create a fullscreen window with name "test"
+# todo : Put this into openCV extension library
+
+to say something
+  bash "say " something
+
+to transpose an image
+  return image.T
+
+define the fast fourier transformation of data as
+  numpy.fft.fft data
+
+width is 512
+height is 512
+image is numpy zeros of width * height
+image is image astype uint8 # todo: match 'of type byte' -> numpy.astype uint8
+
+create a fullscreen window with name "Record speech"
+show image in it # window "Record speech"
+
+set last to image
+aborted is False
+i is 0
+
+if platform system is 'Darwin'
+    tell app "Finder" to set frontmost of process "Python" to true
+
+to record
+  CHUNK is 4096
+  open new pyaudio with format paInt16, channel 1, rate 22050,input yes, frames_per_buffer = chunk, input device index 0
+  stream is the result
+  offset is 0
+  summ is 0
+  length l is 1024
+  zeroz is numpy zeros of width
+  set recorded to numpy empty of length l
+  while True
+    return if aborted
+    try
+      rawdata is read stream CHUNK
+      data is numpy fromstring rawdata with dtype 'int16'
+      last is summ
+      summ is numpy sum of absolute of the data
+      if i<20 and summ<23456 then continue
+      numpy append data to recorded
+      stepsize is 64
+      while offset < size of recorded - length
+        return if aborted
+        increment offset by stepsize
+        data is recorded from offset to offset+length
+        get the fast fourier transformation of the data
+        data is its absolute
+        slice data from -width-1 to -1
+        set data to 1/256th of it
+        if the numpy sum of the data < 1000
+          if i>30
+            while i<width
+              image at i is zeroz
+              increment i
+        # else
+        # putmask(data, data > 255, 255)
+        increment i
+        if i > width
+          go upload the transposed image
+          show it
+        else
+          set image at i to data
+          if i modulo 4 is zero:
+            show transposed image
+    catch IOError
+      print 'lost frame'
+    catch Exception as err
+          print 'Record sound error' err
+
+to show image in window
+  cv2.imshow window, image
+
+to wait for a key
+  cv2.waitKey(1)
+
+to destroy the window
+  cv2.destroyWindow(winName)
+
+define running as script
+  __name__ equals '__main__'
+
+class RecordThread is a Thread:
+  def run: record
+
+if running as script:
+  start a new RecordThread
+  forever
+    wait for a key
+    set key to it
+    if key < 0 then continue
+    if chr(key) is 'q' or key is ord('q') or key is 27:
+      print 'DONE'
+      toggle aborted
+      destroy the window after .32 seconds
+      exit
