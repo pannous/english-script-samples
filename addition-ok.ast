@@ -1,33 +1,7 @@
 from ast import *
+print("HI")
+inline_ast=Module(body=[FunctionDef(name='add', args=arguments(args=[arg(arg='a', annotation=None), arg(arg='b', annotation=None)], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]), body=[Return(value=BinOp(left=Name(id='a', ctx=Load()), op=Add(), right=Name(id='b', ctx=Load())))], decorator_list=[], returns=None), Assign(targets=[Name(id='it', ctx=Store())], value=Call(func=Name(id='add', ctx=Load()), args=[Num(n=3), Num(n=4)], keywords=[])), Assert(test=Compare(left=Name(id='it', ctx=Load()), ops=[Eq()], comparators=[Num(n=7)]), msg=None),
 
-inline_ast=Module(
-body=[Global(
-names=['it']), FunctionDef(
-name='add', args=arguments(
-args=[Name(
-id='a', ctx=Param(
-)), Name(
-id='b', ctx=Param(
-))], vararg=None, kwarg=None, defaults=[]), body=[Global(
-names=['it']), Assign(
-targets=[Name(
-id='it', ctx=Store(
-))], value=BinOp(
-left=Name(
-id='a', ctx=Load(
-)), op=Add(
-), right=Name(
-id='b', ctx=Load(
-)))), Return(
-value=Name(
-id='it', ctx=Load(
-)))], decorator_list=[]),
-
-Assert(test=Compare(left=Call(func=Name(id='add', ctx=Load()), args=[Num(n=2), Num(n=3)], keywords=[], starargs=None, kwargs=None), ops=[Eq()], comparators=[Num(n=5)]), msg=None),
-
-# py2: Expr(Call(Name('print', Load()), [Str('hi')], [],[],[])),
-Expr(Call(Name('print', Load()), [Str('hi')], [])),
-# Call(Name('print', Load()), [Name('it', Load())], []),
-# Print(None, [Name('it', Load())], True),
-# Print(None, [Str('hi')], True)
+Expr(Call(Name('print', Load()), [Name(id='it', ctx=Load())], [])),
+Expr(Call(Name('print', Load()), [Str('OK')], [])),
 ])
