@@ -1,7 +1,0 @@
-from ast import *
-print("HI")
-inline_ast=Module(body=[FunctionDef(name='add', args=arguments(args=[arg(arg='a', annotation=None), arg(arg='b', annotation=None)], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]), body=[Return(value=BinOp(left=Name(id='a', ctx=Load()), op=Add(), right=Name(id='b', ctx=Load())))], decorator_list=[], returns=None), Assign(targets=[Name(id='it', ctx=Store())], value=Call(func=Name(id='add', ctx=Load()), args=[Num(n=3), Num(n=4)], keywords=[])), Assert(test=Compare(left=Name(id='it', ctx=Load()), ops=[Eq()], comparators=[Num(n=7)]), msg=None),
-
-Expr(Call(Name('print', Load()), [Name(id='it', ctx=Load())], [])),
-Expr(Call(Name('print', Load()), [Str('OK')], [])),
-])

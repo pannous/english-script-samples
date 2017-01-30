@@ -1,8 +1,8 @@
 once beeped: print 'yay' 
 
-beep 3 times #-> trigger["beeped"] IFF there is a listener
+beep 3 times #-> trigger["beeped"] IF there is a listener
 
-assert printed 'yay' 
+assert printed 'yay'   # triggered by print command
 
 whenever I clap my hand you toggle the light in the living room
 
