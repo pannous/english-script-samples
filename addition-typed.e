@@ -1,4 +1,4 @@
-to adde an integer a to an integer b
+to add an integer a to an integer b
     return a plus b
 end
 
