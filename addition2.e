@@ -1,3 +1,4 @@
+print "OK"
 to add a to b
     return a plus b
 end
